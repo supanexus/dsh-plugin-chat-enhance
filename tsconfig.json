@@ -1,0 +1,24 @@
+{
+  "extends": "../../../../engine/tsconfig.base.client.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types",
+    "types": ["client-build-environment", "node"]
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    { "path": "../../../../engine/vendor/cordis" },
+    { "path": "../../../../engine/vendor/schemastery" },
+    { "path": "../../../../engine/packages/api/remotes/tsconfig.client.json" },
+    { "path": "../../../../engine/packages/client/connection/tsconfig.host.json" },
+    { "path": "../../../../engine/packages/client/locale" },
+    { "path": "../../../../engine/packages/client/store" },
+    { "path": "../../../../engine/packages/client/ui-conversation" },
+    { "path": "../../../../engine/packages/client/ui-model-selection" },
+    { "path": "../../../../engine/packages/client/ui-renderer" },
+    { "path": "../../../../engine/packages/client/ui-slots" },
+    { "path": "../../../../engine/packages/runtime-diagnostics/invariants" }
+  ]
+}

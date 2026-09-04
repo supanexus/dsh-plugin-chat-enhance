@@ -1,0 +1,6 @@
+# SupaNexus 模型对话增强（搜索 + 多模态标签 + 图片上传）
+- insert:
+    - id: supanexus-chat-enhance
+      name: '@supanexus/dsh-plugin-chat-enhance'
+      config:
+        maxRecent: 4

@@ -1,0 +1,123 @@
+{
+  "name": "@supanexus/dsh-plugin-chat-enhance",
+  "description": "SupaNexus chat enhance: searchable model picker, image capability tags, and composer image upload",
+  "version": "0.3.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "author": "SupaNexus",
+  "homepage": "https://github.com/supanexus/dsh-plugin-chat-enhance#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supanexus/dsh-plugin-chat-enhance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/supanexus/dsh-plugin-chat-enhance/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "supanexus",
+    "deepseek-harness",
+    "chat-enhance",
+    "multimodal"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "whale": {
+    "layer": "ui",
+    "dshPlugin": true,
+    "publish": {
+      "github": true,
+      "repo": "supanexus/dsh-plugin-chat-enhance",
+      "topics": ["dsh-plugin", "supanexus", "deepseek-harness", "chat-enhance", "multimodal"]
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-model-selection",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b && tsdown --env.DSH_BUILD_FACE client",
+    "bundle": "pnpm run build",
+    "test": "vitest run",
+    "watch": "tsc -b --watch"
+  },
+  "license": "MIT",
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/shared/**",
+    "cordis.patch.yml",
+    "lib/types/**/*.d.ts"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-api-remotes": "*",
+    "@deepseek-ai/dsh-client-connection": "*",
+    "@deepseek-ai/dsh-client-locale": "*",
+    "@deepseek-ai/dsh-client-ui-conversation": "*",
+    "@deepseek-ai/dsh-client-ui-model-selection": "*",
+    "@deepseek-ai/dsh-client-ui-renderer": "*",
+    "@deepseek-ai/dsh-client-store": "*",
+    "@deepseek-ai/schemastery": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": { "optional": true },
+    "@deepseek-ai/dsh-api-remotes": { "optional": true },
+    "@deepseek-ai/dsh-client-connection": { "optional": true },
+    "@deepseek-ai/dsh-client-locale": { "optional": true },
+    "@deepseek-ai/dsh-client-ui-conversation": { "optional": true },
+    "@deepseek-ai/dsh-client-ui-model-selection": { "optional": true },
+    "@deepseek-ai/dsh-client-ui-renderer": { "optional": true },
+    "@deepseek-ai/dsh-client-store": { "optional": true },
+    "@deepseek-ai/schemastery": { "optional": true }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "file:../../../../engine/vendor/cordis",
+    "@deepseek-ai/dsh-api-remotes": "file:../../../../engine/packages/api/remotes",
+    "@deepseek-ai/dsh-client-connection": "file:../../../../engine/packages/client/connection",
+    "@deepseek-ai/dsh-client-locale": "file:../../../../engine/packages/client/locale",
+    "@deepseek-ai/dsh-client-store": "file:../../../../engine/packages/client/store",
+    "@deepseek-ai/dsh-client-ui-conversation": "file:../../../../engine/packages/client/ui-conversation",
+    "@deepseek-ai/dsh-client-ui-model-selection": "file:../../../../engine/packages/client/ui-model-selection",
+    "@deepseek-ai/dsh-client-ui-renderer": "file:../../../../engine/packages/client/ui-renderer",
+    "@deepseek-ai/dsh-client-ui-slots": "file:../../../../engine/packages/client/ui-slots",
+    "@deepseek-ai/dsh-invariants": "file:../../../../engine/packages/runtime-diagnostics/invariants",
+    "@deepseek-ai/schemastery": "file:../../../../engine/vendor/schemastery",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "~18.3.1",
+    "jsdom": "^26.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}
