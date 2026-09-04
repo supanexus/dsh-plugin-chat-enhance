@@ -2,7 +2,9 @@
 
 [中文](./README.md) · English
 
-SupaNexus **chat enhance** for DeepSeek Harness: searchable model picker, image capability tags, and composer image upload.
+Searchable model picker, vision capability tags, and composer image upload for DeepSeek Harness.
+
+Repo: [GitHub](https://github.com/supanexus/dsh-plugin-chat-enhance)
 
 ## Install
 
@@ -10,37 +12,32 @@ SupaNexus **chat enhance** for DeepSeek Harness: searchable model picker, image 
 dsh plugin --profile web add github:supanexus/dsh-plugin-chat-enhance#v0.3.0
 ```
 
-Restart `dsh web` (or Desktop Host) after install. Open the printed `?token=` URL.
+Fully restart `dsh web` (or Desktop Host) after install, then open the printed `?token=` URL.
 
-## Features
+## What it does
 
-- Recent-model chips (persisted in `localStorage`)
-- Searchable picker with provider tabs and an “Images only” filter
-- **Image** tag next to vision-capable model names
-- Paperclip on `conversation.input.left` (official draft attachment path)
-- Shadows `conversation.input.model` at `priority: -1`
+- **Recent models** — quick chips for models you used lately
+- **Searchable picker** — filter by provider; optional “Images only”
+- **Image tag** — marks models that accept image input
+- **Upload** — paperclip on the composer to attach images to the draft
 
-## Soft dependency
+## How to use
 
-Model picking works without `@supanexus/dsh-plugin-supanexus-core`. Vision tags and image upload need the model’s `input` modalities to include `image` (typically written by SupaNexus Core Quick Setup / OAuth). Without Core, those features simply stay inactive.
+1. Open any conversation
+2. Open the model control → search or filter; turn on “Images only” when you need vision
+3. Click the paperclip to attach images, then send
 
-## Config
+## Notes
+
+- Model search/switch works **without** SupaNexus Core
+- Vision tags and upload need the selected model to declare image input (often via Core Quick Setup / OAuth). Otherwise those features stay inactive.
+
+## Optional config
 
 ```yaml
 config:
-  maxRecent: 4
+  maxRecent: 4   # number of recent-model chips
 ```
-
-## Develop / rebuild
-
-Peer `@deepseek-ai/*` packages are not on the public npm registry. Build inside a DeepSeek Harness / `whale-harness-free` engine checkout:
-
-```bash
-pnpm install && pnpm build && pnpm test
-dsh plugin --profile web add "file:/absolute/path/to/dsh-plugin-chat-enhance"
-```
-
-Published installs use the committed `lib/` artifacts (no user-side build).
 
 ## License
 
