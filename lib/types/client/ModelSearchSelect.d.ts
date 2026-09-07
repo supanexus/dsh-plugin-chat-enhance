@@ -4,12 +4,7 @@ import type { CapabilityCache } from './capabilities-wire.ts';
 type ModelSearchSelectProps = ModelSelectInjected & {
     readonly locked: boolean;
     readonly capabilityCache: CapabilityCache;
-} & PropsLocale<'chatEnhance'> & {
-    /** Optional standard prop from the model seat (used to warn when draft has images). */
-    readonly useInput?: <S>(sel: (state: {
-        readonly imageIds: readonly unknown[];
-    }) => S) => S;
-};
+} & PropsLocale<'chatEnhance'>;
 /**
  * Render the composer model seat with recent chips and a searchable picker panel.
  */

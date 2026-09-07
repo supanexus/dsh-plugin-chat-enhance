@@ -9,7 +9,7 @@ import { registerCapabilityRoutes } from './host/capabilities.ts'
 export { Config, name, inject } from './host/config.ts'
 
 /**
- * Register Host capability probe used by the client picker + upload gate.
+ * Register Host capability probe used by the client picker + image intake gate.
  * @param ctx - Host plugin context.
  * @param _config - Cordis row configuration.
  */

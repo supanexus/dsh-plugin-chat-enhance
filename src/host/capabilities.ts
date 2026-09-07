@@ -46,7 +46,7 @@ function parseQueries(request: Request): CapabilityQuery[] {
 }
 
 /**
- * Register GET /api/chat-enhance.capabilities?m=provider/model for Vision tags + upload gate.
+ * Register GET /api/chat-enhance.capabilities?m=provider/model for Vision tags + image intake gate.
  * (Host connection.fetch only allows GET/HEAD.)
  * @param ctx - Host context with `llm` + `connection`.
  */
@@ -54,6 +54,7 @@ export function registerCapabilityRoutes(ctx: Context): void {
   ctx.effect(() => ctx.connection.fetch.register({
     path: CAPABILITIES_PATH,
     methods: ['GET'],
+    requestBody: 'buffered',
     fetch: async (request) => {
       try {
         const llm = ctx.get('llm') as LlmCapabilityFace

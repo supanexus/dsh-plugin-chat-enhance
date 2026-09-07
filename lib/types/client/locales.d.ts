@@ -13,11 +13,6 @@ export declare const zh: {
     'filter.imageOnly': string;
     'filter.imageOnly.aria': string;
     'capability.image': string;
-    'warn.modelNoImage': string;
-    'upload.aria': string;
-    'upload.disabled': string;
-    'upload.unavailable': string;
-    'upload.failed': string;
     'empty.models': string;
     'empty.recent': string;
     'empty.recentList': string;
@@ -43,11 +38,6 @@ export declare const en: {
     'filter.imageOnly': string;
     'filter.imageOnly.aria': string;
     'capability.image': string;
-    'warn.modelNoImage': string;
-    'upload.aria': string;
-    'upload.disabled': string;
-    'upload.unavailable': string;
-    'upload.failed': string;
     'empty.models': string;
     'empty.recent': string;
     'empty.recentList': string;

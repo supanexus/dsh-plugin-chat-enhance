@@ -1,7 +1,7 @@
 {
   "name": "@supanexus/dsh-plugin-chat-enhance",
-  "description": "SupaNexus chat enhance: searchable model picker, image capability tags, and composer image upload",
-  "version": "0.3.0",
+  "description": "SupaNexus chat enhance: searchable model picker with image capability tags",
+  "version": "0.3.4",
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
@@ -18,8 +18,7 @@
     "dsh-plugin",
     "supanexus",
     "deepseek-harness",
-    "chat-enhance",
-    "multimodal"
+    "chat-enhance"
   ],
   "exports": {
     ".": {
@@ -44,7 +43,7 @@
     "publish": {
       "github": true,
       "repo": "supanexus/dsh-plugin-chat-enhance",
-      "topics": ["dsh-plugin", "supanexus", "deepseek-harness", "chat-enhance", "multimodal"]
+      "topics": ["dsh-plugin", "supanexus", "deepseek-harness", "chat-enhance"]
     }
   },
   "dsh": {
@@ -65,6 +64,7 @@
   "scripts": {
     "build": "tsc -b && tsdown --env.DSH_BUILD_FACE client",
     "bundle": "pnpm run build",
+    "check:client": "node --check lib/client.js",
     "test": "vitest run",
     "watch": "tsc -b --watch"
   },

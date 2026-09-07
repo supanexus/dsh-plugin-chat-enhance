@@ -48,10 +48,7 @@ type ModelSearchSelectProps =
   ModelSelectInjected & {
     readonly locked: boolean
     readonly capabilityCache: CapabilityCache
-  } & PropsLocale<'chatEnhance'> & {
-    /** Optional standard prop from the model seat (used to warn when draft has images). */
-    readonly useInput?: <S>(sel: (state: { readonly imageIds: readonly unknown[] }) => S) => S
-  }
+  } & PropsLocale<'chatEnhance'>
 
 function routeKey(provider: string, model: string): string {
   return `${provider}/${model}`
@@ -120,7 +117,6 @@ function ModelSearchSelectInner({
   load,
   select,
   capabilityCache,
-  useInput,
   t,
 }: ModelSearchSelectProps): JSX.Element | null {
   const state = useSyncExternalStore(
@@ -141,9 +137,6 @@ function ModelSearchSelectInner({
   const searchRef = useRef<HTMLInputElement | null>(null)
   const catalogRef = useRef<HTMLDivElement | null>(null)
   const panelId = useId()
-  const draftImageCount = useInput?.(s => s.imageIds.length) ?? 0
-  const draftImageCountRef = useRef(draftImageCount)
-  draftImageCountRef.current = draftImageCount
 
   useEffect(() => {
     if (state.status !== 'ready' || state.groups.length === 0) return
@@ -306,12 +299,8 @@ function ModelSearchSelectInner({
       close(true)
       return
     }
-    const targetSupportsImage = capabilityCache.get(selection.provider, selection.model) === true
-    if (!targetSupportsImage && draftImageCountRef.current > 0) {
-      setToast(t('warn.modelNoImage'))
-    }
     void select(selection).then(accepted => { settleSelection(accepted, label, selection) })
-  }, [capabilityCache, close, select, settleSelection, state.current, t])
+  }, [close, select, settleSelection, state.current])
 
   const chooseEffort = useCallback((effort: string | undefined): void => {
     if (state.current === null) return
