@@ -436,7 +436,13 @@ function ModelSearchSelectInner({
       </button>
 
       {open && (
-        <div id={panelId} className={css.panel} role="dialog" aria-label={t('picker.aria')}>
+        <div
+          id={panelId}
+          className={css.panel}
+          role="dialog"
+          aria-label={t('picker.aria')}
+          data-trigger-menu=""
+        >
           <input
             ref={searchRef}
             className={css.searchInput}

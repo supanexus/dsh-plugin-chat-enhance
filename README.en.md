@@ -9,7 +9,7 @@ Repo: [GitHub](https://github.com/supanexus/dsh-plugin-chat-enhance)
 ## Install
 
 ```bash
-dsh plugin --profile web add github:supanexus/dsh-plugin-chat-enhance#v0.3.4
+dsh plugin --profile web add github:supanexus/dsh-plugin-chat-enhance#v0.3.5
 ```
 
 Fully restart `dsh web` (or Desktop Host) after install, then open the printed `?token=` URL.

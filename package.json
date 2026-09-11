@@ -1,7 +1,7 @@
 {
   "name": "@supanexus/dsh-plugin-chat-enhance",
   "description": "SupaNexus chat enhance: searchable model picker with image capability tags",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",

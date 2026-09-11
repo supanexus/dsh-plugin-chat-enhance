@@ -9,7 +9,7 @@
 ## 安装
 
 ```bash
-dsh plugin --profile web add github:supanexus/dsh-plugin-chat-enhance#v0.3.4
+dsh plugin --profile web add github:supanexus/dsh-plugin-chat-enhance#v0.3.5
 ```
 
 安装后请**完全重启** `dsh web`（或 Desktop Host），并用打印的 `?token=` 地址打开。
