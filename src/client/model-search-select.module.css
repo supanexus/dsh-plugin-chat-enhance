@@ -86,6 +86,7 @@
   cursor: default;
 }
 
+/* Positioning only — fill + blur come from MenuSurface (.material / macOS backing). */
 .panel {
   position: absolute;
   right: 0;
@@ -97,10 +98,10 @@
   max-height: min(420px, calc(100vh - 96px));
   overflow: hidden;
   padding: 8px;
-  border: 1px solid var(--dsw-alias-border-inverted);
+  border: 0;
   border-radius: 12px;
-  background: var(--dsw-specific-menu);
-  box-shadow: var(--dsw-shadow-lv3);
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);
+  box-shadow: var(--dsw-elevation-prominent, var(--dsw-shadow-lv3));
   color: var(--dsw-alias-label-primary);
   --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);
   --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);

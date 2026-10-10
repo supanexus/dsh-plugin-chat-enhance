@@ -1,5 +1,6 @@
 import type { ModelSelection } from '@deepseek-ai/dsh-api-remotes/client'
 import type { SnapshotStore } from '@deepseek-ai/dsh-client-store'
+import type { RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
 import { matchesQuery } from './recent-models.ts'
 
 /** Minimal directory snapshot shape used by the picker UI. */
@@ -100,8 +101,14 @@ export interface ModelSelectInjected {
     readonly groups: readonly ModelGroupSnapshot[]
     readonly failures: readonly { readonly id: string; readonly name: string; readonly message: string }[]
     readonly status: 'idle' | 'loading' | 'ready' | 'selecting' | 'error'
+    readonly pending?: ModelSelection | null
+    readonly routable?: boolean | null
     readonly error: string | null
   }>
   readonly load: () => void
-  readonly select: (selection: ModelSelection) => Promise<boolean>
+  /**
+   * Select a complete provider/model/reasoning selection.
+   * Matches dsh ≥ 0.1.7 official seat: Host `RemoteResult`, or undefined when unavailable.
+   */
+  readonly select: (selection: ModelSelection) => Promise<RemoteResult<void> | undefined>
 }

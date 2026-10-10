@@ -15,6 +15,7 @@ import {
   type ReactNode,
 } from 'react'
 import type { ModelSelection } from '@deepseek-ai/dsh-api-remotes/client'
+import { MenuSurface } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
 import {
   filterImageCapable,
@@ -299,7 +300,10 @@ function ModelSearchSelectInner({
       close(true)
       return
     }
-    void select(selection).then(accepted => { settleSelection(accepted, label, selection) })
+    void select(selection).then((result) => {
+      const accepted = result === undefined ? false : result.ok
+      settleSelection(accepted, label, selection)
+    })
   }, [close, select, settleSelection, state.current])
 
   const chooseEffort = useCallback((effort: string | undefined): void => {
@@ -390,7 +394,9 @@ function ModelSearchSelectInner({
 
   if (!available) return null
 
-  const busy = state.status === 'selecting'
+  const busy = state.pending !== null && state.pending !== undefined
+    ? true
+    : state.status === 'selecting'
   const waiting = state.current === null && state.status === 'loading'
 
   return (
@@ -436,7 +442,7 @@ function ModelSearchSelectInner({
       </button>
 
       {open && (
-        <div
+        <MenuSurface
           id={panelId}
           className={css.panel}
           role="dialog"
@@ -619,7 +625,7 @@ function ModelSearchSelectInner({
               </div>
             </div>
           )}
-        </div>
+        </MenuSurface>
       )}
 
       {toast !== null && (

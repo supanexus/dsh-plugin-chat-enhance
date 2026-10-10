@@ -84,8 +84,8 @@ export function registerChatEnhance(ctx: ClientContext): void {
                 if (available) directory.load().catch(() => { /* surfaced on the store */ })
               },
               select: (selection: ModelSelection) => available
-                ? directory.select(selection).then(() => true, () => false)
-                : Promise.resolve(false),
+                ? directory.select(selection)
+                : Promise.resolve(undefined),
             }
           } catch (error) {
             console.error('[supanexus-chat-enhance] seat inject failed', error)
